@@ -1,0 +1,77 @@
+html {
+    padding: 0;
+    margin: 0;
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;    
+}
+
+body {
+    background-color: #0E1415;
+    padding: inherit;
+    margin: inherit;
+}
+
+h2 {
+    color: #ccc;
+}
+
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="button"] {
+    padding: 7px 15px;
+    margin-top: 20px;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+}
+
+input[type="text"] {
+    position: absolute;
+    left: -9999px;
+}
+
+.container {
+    width: 70%;
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#form {
+    border: thin solid #ccc;
+    padding: 45px 60px;
+    width: 460px;
+}
+
+#form .logo {
+
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.logo img {
+    margin: 0 auto 15px auto;
+    width: 400px;
+}
+
+#confirmation {
+    display: none;
+}
+
+#error {
+    display: none;
+    color: red;
+}
+
