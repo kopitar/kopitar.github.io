@@ -58,6 +58,7 @@
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 document.getElementById('form').style.display = 'none';
+                document.getElementById('error').style.display = 'none';
                 document.getElementById('confirmation').style.display = 'block';
             } else {
                 document.getElementById('form').style.display = 'none';
