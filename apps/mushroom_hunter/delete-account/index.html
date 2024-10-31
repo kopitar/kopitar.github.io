@@ -2,15 +2,73 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Delete account - WIP</title>
-  <link rel="stylesheet" href="../../../css/style.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mushroom Hunter - Delete account</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/style.css">
 </head>
 
 <body>
-  todo ....
+    <div class="container">
+        <div id="form">
+            <div class="logo">
+                <img src="../../../images/logo.png" alt="Mushroom Hunter">
+            </div>
+            <h2>Delete your account?</h2>
+            <p id="instructions">Enter the email address associated with your Mushroom Hunter account.</p>
+            <form id="delete-account">
+                <input type="email" id="email" name="email" placeholder="email" aria-describedby="instructions"
+                    required>
+                <input type="text" name="lastname">
+                <input type="button" name="submit" value="Confirm">
+            </form>
+        </div>
+        <div id="confirmation">
+            <p>Request to delete your account was sent. Your account and all of its data will be deleted after a period
+                of 7 days.</p>
+        </div>
+        <div id="error">
+            <p>There was an error processing your request. Please try again later.</p><br />
+            <input type="button" name="retry" value="Retry">
+        </div>
 </body>
+<script>
+    const submit = document.querySelector('input[name="submit"]');
+    const retry = document.querySelector('input[name="retry"]');
+
+    submit.addEventListener('click', () => {
+        const email = document.querySelector('input[name="email"]').value;
+
+        if (email.length === 0) {
+            alert('Please enter your email address.');
+            return;
+        }
+
+        const lastname = document.querySelector('input[name="lastname"]').value;
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'https://phplaravel-1297067-4714967.cloudwaysapps.com/api/v1/users/delete-account', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify({ email, lastname }));
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                document.getElementById('form').style.display = 'none';
+                document.getElementById('confirmation').style.display = 'block';
+            } else {
+                document.getElementById('form').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+            }
+        };
+    });
+
+    retry.addEventListener('click', () => {
+        document.location.reload();
+    });
+</script>
 
 </html>
